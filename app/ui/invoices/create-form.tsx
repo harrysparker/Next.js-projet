@@ -25,6 +25,8 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             Choose customer
           </label>
           <div className="relative">
+            <div>
+            </div>
             <select
               id="customer"
               name="customerId"
