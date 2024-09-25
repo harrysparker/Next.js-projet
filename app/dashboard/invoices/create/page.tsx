@@ -1,30 +1,29 @@
-import { fetchFilteredCustomers } from "@/app/lib/data";
+import Form from "@/app/ui/invoices/create-form";
+import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
+import { fetchCustomers } from "@/app/lib/data";
 import { Metadata } from 'next';
-import CustomersTable from "@/app/ui/customers/table";
 
 export const metadata: Metadata = {
-  title: 'Customers',
+  title: 'Invoices | Acme Dashboard',
 };
 
 
-export default async function Page(
-  {
-    searchParams
-  }: {
-    searchParams?: {
-      query?: string;
-      page?: string;
-
-    }
-  }
-
-) {
-  const query = searchParams?.query || ""
-  const customers = await fetchFilteredCustomers(query);
+export default async function Page() {
+  const customers = await fetchCustomers();
 
   return (
     <main>
-      <CustomersTable customers={customers} />
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: "Invoices", href: "/dashboard/invoices" },
+          {
+            label: "Create Invoice",
+            href: "/dashboard/invoices/create",
+            active: true,
+          },
+        ]}
+      />
+      <Form customers={customers} />
     </main>
   );
 }
