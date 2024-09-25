@@ -25,6 +25,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             active: true,
           },
         ]}
+        
       />
       <Form invoice={invoice} customers={customers} />
     </main>
