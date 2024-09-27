@@ -9,7 +9,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  function handleSearch(term: string) {
+  
     const handleSearch = useDebouncedCallback((term) => {
       const params = new URLSearchParams(searchParams);
       params.set("page", "1");
@@ -21,9 +21,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
       }
       replace(`${pathname}?${params.toString()}`);
     }, 300);
-
-    console.log(term);
-  }
+  
+    
   return (
     <div className="relative flex flex-1 flex-shrink-0">
       <label htmlFor="search" className="sr-only">
